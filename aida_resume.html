@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aida Nejad - Software Engineer & Computer Vision Enthusiast</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #fef8f6 0%, #fef3f0 50%, #fde8e3 100%);
+            color: #2c2c2c;
+            line-height: 1.6;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(255, 200, 210, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(255, 150, 180, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 2px solid rgba(255, 180, 200, 0.3);
+            position: sticky;
+            top: 0;
+            background: rgba(254, 248, 246, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ff8fa3 0%, #ffb3cc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #5a5a5a;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+
+        nav a:hover {
+            color: #ff8fa3;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 100px 0 60px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .profile-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            margin-bottom: 30px;
+            border: 5px solid rgba(255, 180, 200, 0.4);
+            object-fit: cover;
+            box-shadow: 0 10px 40px rgba(255, 143, 163, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+
+        .header h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            color: #2c2c2c;
+            font-weight: 800;
+        }
+
+        .header .subtitle {
+            font-size: 1.3em;
+            color: #ff8fa3;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .header .tagline {
+            font-size: 1.1em;
+            color: #888;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: 2px solid #ff8fa3;
+            background: transparent;
+            color: #ff8fa3;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-weight: 600;
+            display: inline-block;
+            font-size: 0.95em;
+        }
+
+        .btn:hover {
+            background: #ff8fa3;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 143, 163, 0.3);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ff8fa3 0%, #ffb3cc 100%);
+            color: white;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 143, 163, 0.4);
+        }
+
+        /* Section */
+        section {
+            margin: 80px 0;
+            padding: 60px 0;
+            border-bottom: 2px solid rgba(255, 180, 200, 0.2);
+        }
+
+        section:last-child {
+            border-bottom: none;
+        }
+
+        h2 {
+            font-size: 2.2em;
+            margin-bottom: 40px;
+            color: #2c2c2c;
+            font-weight: 800;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 5px;
+            background: linear-gradient(90deg, #ff8fa3 0%, #ffb3cc 100%);
+            margin-top: 15px;
+            border-radius: 3px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+            animation: fadeInUp 1s ease;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.05em;
+            line-height: 1.9;
+            color: #666;
+        }
+
+        .about-text p strong {
+            color: #ff8fa3;
+            font-weight: 700;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .skill {
+            background: rgba(255, 180, 200, 0.12);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 5px solid #ff8fa3;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .skill:hover {
+            transform: translateX(8px);
+            background: rgba(255, 180, 200, 0.18);
+            box-shadow: 0 5px 20px rgba(255, 143, 163, 0.15);
+        }
+
+        .skill h4 {
+            color: #ff8fa3;
+            margin-bottom: 8px;
+            font-size: 1em;
+            font-weight: 700;
+        }
+
+        .skill p {
+            color: #777;
+            font-size: 0.95em;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.6);
+            border: 2px solid rgba(255, 180, 200, 0.2);
+            padding: 30px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: #ff8fa3;
+            background: rgba(255, 240, 245, 0.8);
+            box-shadow: 0 15px 40px rgba(255, 143, 163, 0.2);
+        }
+
+        .project-card h3 {
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            color: #2c2c2c;
+            font-weight: 700;
+        }
+
+        .project-card p {
+            color: #777;
+            margin-bottom: 20px;
+            line-height: 1.7;
+            font-size: 0.98em;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .tech-tag {
+            background: rgba(255, 143, 163, 0.2);
+            color: #ff8fa3;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .project-placeholder {
+            text-align: center;
+            padding: 40px 20px;
+            color: #999;
+            font-style: italic;
+        }
+
+        /* Experience */
+        .experience-item {
+            background: rgba(255, 255, 255, 0.6);
+            border-left: 5px solid #ff8fa3;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease;
+        }
+
+        .experience-item:hover {
+            background: rgba(255, 240, 245, 0.8);
+            transform: translateX(8px);
+            box-shadow: 0 8px 25px rgba(255, 143, 163, 0.15);
+        }
+
+        .experience-item h3 {
+            color: #2c2c2c;
+            font-size: 1.25em;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .experience-item .company {
+            color: #ff8fa3;
+            font-weight: 700;
+            margin-bottom: 8px;
+            font-size: 1em;
+        }
+
+        .experience-item .date {
+            color: #aaa;
+            font-size: 0.9em;
+            margin-bottom: 12px;
+        }
+
+        .experience-item p {
+            color: #777;
+            line-height: 1.7;
+            font-size: 0.98em;
+        }
+
+        /* Education */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .education-card {
+            background: rgba(255, 255, 255, 0.6);
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid rgba(255, 180, 200, 0.2);
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .education-card:hover {
+            transform: translateY(-8px);
+            border-color: #ff8fa3;
+            background: rgba(255, 240, 245, 0.8);
+            box-shadow: 0 12px 35px rgba(255, 143, 163, 0.15);
+        }
+
+        .education-card h3 {
+            color: #2c2c2c;
+            margin-bottom: 12px;
+            font-size: 1.15em;
+            font-weight: 700;
+        }
+
+        .education-card .school {
+            color: #ff8fa3;
+            font-weight: 700;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+
+        .education-card p {
+            color: #888;
+            margin-bottom: 6px;
+            font-size: 0.95em;
+        }
+
+        /* Skills Section */
+        .skills-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-category {
+            background: rgba(255, 255, 255, 0.6);
+            padding: 25px;
+            border-radius: 12px;
+            border: 2px solid rgba(255, 180, 200, 0.2);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            border-color: #ff8fa3;
+            background: rgba(255, 240, 245, 0.8);
+            box-shadow: 0 8px 25px rgba(255, 143, 163, 0.15);
+        }
+
+        .skill-category h3 {
+            color: #ff8fa3;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            font-weight: 700;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            color: #666;
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+            font-size: 0.95em;
+        }
+
+        .skill-category li::before {
+            content: '▸';
+            color: #ff8fa3;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* Contact */
+        .contact-section {
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin: 40px 0;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-item a {
+            color: #ff8fa3;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.95em;
+        }
+
+        .contact-item a:hover {
+            color: #ff5a7e;
+            text-decoration: underline;
+        }
+
+        .contact-item span {
+            color: #999;
+            font-size: 0.9em;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 2px solid rgba(255, 180, 200, 0.2);
+            color: #aaa;
+            margin-top: 60px;
+            font-size: 0.9em;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2em;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                gap: 15px;
+                font-size: 0.85em;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+
+            .contact-info {
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">Aida Nejad</div>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <!-- Profile Image -->
+            <img src="profile.jpg" alt="Aida Nejad" class="profile-img">
+            <h1>Aida Nejad</h1>
+            <div class="subtitle">Software Engineer • Computer Vision Enthusiast</div>
+            <p class="tagline">
+                Bachelor's student in Software Engineering passionate about robotics, computer graphics, and computer vision.<br>
+                Building intelligent systems that bridge software, perception, and design.
+            </p>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn btn-primary">View My Work</a>
+                <a href="#contact" class="btn">Get In Touch</a>
+            </div>
+        </div>
+
+        <!-- About Section -->
+        <section id="about">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        I'm a <strong>Bachelor's student in Software Engineering</strong> at Islamic Azad University with a strong interest in 
+                        robotics, computer graphics, and computer vision.
+                    </p>
+                    <p>
+                        I enjoy combining solid programming fundamentals with a creative, visually-driven approach to problem solving. 
+                        My goal is to grow into a well-rounded engineer who can build intelligent systems that bridge software, perception, and design.
+                    </p>
+                    <p>
+                        Currently, I'm expanding my skills through hands-on projects, coursework, and continuous learning in these cutting-edge areas.
+                    </p>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill">
+                        <h4>🤖 Robotics</h4>
+                        <p>Passionate about building intelligent robotic systems</p>
+                    </div>
+                    <div class="skill">
+                        <h4>👁️ Computer Vision</h4>
+                        <p>Image processing and visual understanding</p>
+                    </div>
+                    <div class="skill">
+                        <h4>🎨 Graphics</h4>
+                        <p>3D modeling and visual design</p>
+                    </div>
+                    <div class="skill">
+                        <h4>💻 Programming</h4>
+                        <p>Python, JavaScript, and modern development</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-placeholder">
+                        📌 Projects coming soon!<br>
+                        <small>Your amazing work will be featured here</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience">
+            <h2>Experience</h2>
+
+            <div class="experience-item">
+                <h3>Administrative Assistant & Python Instructor</h3>
+                <div class="company">Radis Educational Institute, Rasht, Gilan</div>
+                <div class="date">September 2023 – January 2025</div>
+                <p>
+                    Worked as Python instructor and administrative assistant, teaching students aged 12–18 and managing 
+                    day-to-day operations. Developed engaging educational content and mentored young learners in programming fundamentals.
+                </p>
+            </div>
+
+            <div class="experience-item">
+                <h3>Intern, Computer Services and Publishing Department</h3>
+                <div class="company">Technical and Vocational Organization, Rasht, Gilan</div>
+                <div class="date">October 2025 – Present</div>
+                <p>
+                    Managing class registrations and introducing participants to exams. Coordinating with various departments 
+                    to ensure smooth operations and participant satisfaction.
+                </p>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education">
+            <h2>Education</h2>
+            <div class="education-grid">
+                <div class="education-card">
+                    <h3>Bachelor of Software Engineering</h3>
+                    <div class="school">Islamic Azad University, Tehran</div>
+                    <p><strong>Jan 2021 – Jul 2026</strong></p>
+                    <p>GPA: 16.30 ≈ 3.2/4.0</p>
+                </div>
+                <div class="education-card">
+                    <h3>Diploma in Computer Animation</h3>
+                    <div class="school">Imam Sadegh Technical High School</div>
+                    <p><strong>Sept 2017 – Jun 2020</strong></p>
+                    <p>GPA: 16.43 ≈ 3.2/4.0</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="skills-list">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <ul>
+                        <li>Python</li>
+                        <li>JavaScript</li>
+                        <li>HTML & CSS</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>AI & Computer Vision</h3>
+                    <ul>
+                        <li>Machine Learning</li>
+                        <li>Deep Learning (Basic)</li>
+                        <li>Computer Vision</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Design & Animation</h3>
+                    <ul>
+                        <li>Autodesk Maya</li>
+                        <li>Adobe Animate</li>
+                        <li>Web Design</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools & Platforms</h3>
+                    <ul>
+                        <li>VS Code</li>
+                        <li>GitHub</li>
+                        <li>WordPress</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Interests -->
+        <section id="research">
+            <h2>Research Interests</h2>
+            <div class="skills-list">
+                <div class="skill-category">
+                    <h3>🎯 Focus Areas</h3>
+                    <ul>
+                        <li>Computer Vision</li>
+                        <li>Robotics</li>
+                        <li>Computer Graphics</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Languages -->
+        <section id="languages">
+            <h2>Languages</h2>
+            <div class="skills-list">
+                <div class="skill-category">
+                    <h3>🌐 Multilingual</h3>
+                    <ul>
+                        <li><strong>Persian:</strong> Native</li>
+                        <li><strong>English:</strong> Advanced (TOEFL planned for Feb. 2027)</li>
+                        <li><strong>Korean:</strong> Basic (A1)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Get In Touch</h2>
+            <p style="text-align: center; color: #888; font-size: 1.05em; margin-bottom: 30px;">
+                Feel free to reach out for collaborations, opportunities, or just to chat about tech!
+            </p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📧 Email</span>
+                    <a href="mailto:maedemnejad@gmail.com">maedemnejad@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <span>💼 LinkedIn</span>
+                    <a href="https://linkedin.com">linkedin.com/in/aidanejad</a>
+                </div>
+                <div class="contact-item">
+                    <span>🐙 GitHub</span>
+                    <a href="https://github.com/AidaMNejad">github.com/AidaMNejad</a>
+                </div>
+                <div class="contact-item">
+                    <span>📍 Location</span>
+                    <a href="#">Rasht, Gilan, Iran</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Aida Nejad. All rights reserved. | Built with passion for AI & Computer Vision</p>
+    </footer>
+</body>
+</html>
