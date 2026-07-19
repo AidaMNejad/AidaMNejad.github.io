@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aida Mehdinejad</title>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        overflow-x: hidden;
+    }
+
+    body {
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        background-color: #fdf1f5;
+        color: #111111;
+        line-height: 1.6;
+        font-size: 16px;
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    .wrap {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 60px 24px 80px;
+    }
+
+    /* Intro */
+    .intro {
+        display: flex;
+        gap: 40px;
+        align-items: flex-start;
+        margin-bottom: 28px;
+    }
+
+    .intro img {
+        width: 190px;
+        height: 190px;
+        object-fit: cover;
+        border-radius: 6px;
+        flex-shrink: 0;
+    }
+
+    .intro h1 {
+        font-size: 1.9em;
+        font-weight: 700;
+        margin-bottom: 14px;
+        color: #111111;
+    }
+
+    .intro p {
+        font-size: 1em;
+        color: #111111;
+        line-height: 1.75;
+        margin-bottom: 14px;
+    }
+
+    .links-line {
+        font-size: 1em;
+    }
+
+    .links-line a {
+        color: #2255d6;
+        text-decoration: none;
+    }
+
+    .links-line a:hover {
+        text-decoration: underline;
+    }
+
+    .links-line .sep {
+        color: #999999;
+        margin: 0 6px;
+    }
+
+    .seeking {
+        margin-top: 16px;
+        font-size: 0.98em;
+        font-style: italic;
+        color: #07a702;
+    }
+
+    /* Section rows */
+    .row {
+        display: grid;
+        grid-template-columns: 150px 1fr;
+        gap: 30px;
+        padding: 26px 0;
+        border-top: 1px solid #ecc9d6;
+    }
+
+    .row .label {
+        font-weight: 700;
+        font-size: 1em;
+        color: #111111;
+        padding-top: 2px;
+    }
+
+    .row .content > * + * {
+        margin-top: 16px;
+    }
+
+    .entry-title {
+        font-weight: 700;
+        font-size: 1.02em;
+        color: #111111;
+    }
+
+    .entry-meta {
+        color: #444444;
+        font-size: 0.92em;
+        margin-top: 2px;
+    }
+
+    .entry-meta a {
+        color: #2255d6;
+        text-decoration: none;
+    }
+
+    .entry-meta a:hover {
+        text-decoration: underline;
+    }
+
+    .entry-desc {
+        font-size: 0.96em;
+        color: #222222;
+        margin-top: 6px;
+        line-height: 1.7;
+    }
+
+    .row .content ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .row .content ul li {
+        font-size: 0.96em;
+        color: #222222;
+        margin-bottom: 6px;
+    }
+
+    .row .content ul li strong {
+        color: #111111;
+    }
+
+    .skills-block + .skills-block {
+        margin-top: 14px;
+    }
+
+    .skills-block .cat {
+        font-weight: 700;
+        font-size: 0.92em;
+        color: #111111;
+        margin-bottom: 4px;
+    }
+
+    .skills-block .items {
+        font-size: 0.94em;
+        color: #333333;
+    }
+
+    footer {
+        text-align: center;
+        padding: 30px 0 10px;
+        color: #999999;
+        font-size: 0.82em;
+    }
+
+    footer a {
+        color: #2255d6;
+        text-decoration: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+        .intro {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .intro img {
+            width: 150px;
+            height: 150px;
+        }
+
+        .row {
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+
+        .wrap {
+            padding: 40px 18px 60px;
+        }
+    }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+    <!-- Intro -->
+    <div class="intro">
+        <img src="profile.jpg" alt="Aida Mehdinejad">
+        <div>
+            <h1>Aida Mehdinejad</h1>
+            <p>
+                I'm a Bachelor's student in Software Engineering at Islamic Azad University, with a strong interest in
+                robotics, computer graphics, and computer vision. I enjoy combining solid programming fundamentals with
+                a creative, visually-driven approach to problem solving. My goal is to grow into a well-rounded engineer
+                who can build intelligent systems that bridge software, perception, and design. I am currently expanding
+                my skills through hands-on projects, coursework, and continuous learning in these areas.
+            </p>
+            <p class="links-line">
+                <a href="mailto:maedemnejad@gmail.com">Email</a><span class="sep">/</span><a href="cv.pdf" target="_blank">CV</a><span class="sep">/</span><a href="https://github.com/AidaMNejad" target="_blank">GitHub</a><span class="sep">/</span><a href="https://linkedin.com" target="_blank">LinkedIn</a>
+            </p>
+            <p class="seeking">
+                Seeking Master's Opportunities in Computer Vision, Robotics, and Computer Graphics
+            </p>
+        </div>
+    </div>
+
+    <!-- Education -->
+    <div class="row">
+        <div class="label">Education</div>
+        <div class="content">
+            <div>
+                <div class="entry-title">Bachelor of Computer Engineering — Islamic Azad University, Tehran, Iran</div>
+                <div class="entry-meta">Branch: Software Engineering &nbsp;·&nbsp; Jan 2021 – Jul 2026 &nbsp;·&nbsp; GPA: 16.30 ≈ 3.2 / 4.0</div>
+                <div class="entry-desc">
+                    Selected coursework: Data Structures, Operating Systems, Algorithm Design, Artificial Intelligence,
+                    Software Engineering, Principles of Compiler Design, Assembly Language.
+                </div>
+            </div>
+            <div>
+                <div class="entry-title">Diploma in Computer Content Production (Animation) — Imam Sadegh Technical High School, Tehran, Iran</div>
+                <div class="entry-meta">Sept 2017 – Jun 2020 &nbsp;·&nbsp; GPA: 16.43 ≈ 3.2 / 4.0</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Projects -->
+    <div class="row">
+        <div class="label">Projects</div>
+        <div class="content">
+            <div class="entry-desc">
+                Selected projects are being finalized and will be added here soon.
+            </div>
+        </div>
+    </div>
+
+    <!-- Experience -->
+    <div class="row">
+        <div class="label">Experience</div>
+        <div class="content">
+            <div>
+                <div class="entry-title">Administrative Assistant &amp; Python Instructor for Children</div>
+                <div class="entry-meta">Radis Educational Institute, Rasht, Gilan, Iran &nbsp;·&nbsp; Sept 2023 – Jan 2025</div>
+                <div class="entry-desc">Worked as Python instructor and receptionist, teaching students aged 12–18.</div>
+            </div>
+            <div>
+                <div class="entry-title">Intern, Computer Services and Publishing Department</div>
+                <div class="entry-meta">Technical and Vocational Organization, Rasht, Gilan, Iran &nbsp;·&nbsp; Oct 2025 – Present</div>
+                <div class="entry-desc">Managed class registrations and introduced participants to exams.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Skills -->
+    <div class="row">
+        <div class="label">Skills</div>
+        <div class="content">
+            <div class="skills-block">
+                <div class="cat">Programming Languages</div>
+                <div class="items">Python, JavaScript, HTML, CSS</div>
+            </div>
+            <div class="skills-block">
+                <div class="cat">Artificial Intelligence</div>
+                <div class="items">Familiar with Machine Learning, basic knowledge of Deep Learning, Computer Vision</div>
+            </div>
+            <div class="skills-block">
+                <div class="cat">Animation</div>
+                <div class="items">Autodesk Maya, Adobe Animate (Flash)</div>
+            </div>
+            <div class="skills-block">
+                <div class="cat">Tools & Platforms</div>
+                <div class="items">VS Code, GitHub, WordPress</div>
+            </div>
+            <div class="skills-block">
+                <div class="cat">Other Skills</div>
+                <div class="items">ICDL, Front-End Development, Web Design</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Research Interests -->
+    <div class="row">
+        <div class="label">Research Interests</div>
+        <div class="content">
+            <div class="items">Computer Vision, Robotics, Computer Graphics</div>
+        </div>
+    </div>
+
+    <!-- Certificates -->
+    <div class="row">
+        <div class="label">Certificates</div>
+        <div class="content">
+            <div>
+                <div class="entry-title">Python Programming</div>
+                <div class="entry-meta">Technical and Vocational Training Organization of Iran</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Languages -->
+    <div class="row">
+        <div class="label">Languages</div>
+        <div class="content">
+            <ul>
+                <li><strong>Persian:</strong> Native</li>
+                <li><strong>English:</strong> Advanced (TOEFL planned for Feb. 2027)</li>
+                <li><strong>Korean:</strong> Basic (A1)</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Contact -->
+    <div class="row">
+        <div class="label">Contact</div>
+        <div class="content">
+            <ul>
+                <li>Email: <a href="mailto:maedemnejad@gmail.com">maedemnejad@gmail.com</a></li>
+                <li>GitHub: <a href="https://github.com/AidaMNejad" target="_blank">github.com/AidaMNejad</a></li>
+                <li>LinkedIn: <a href="https://linkedin.com" target="_blank">linkedin.com/in/aidamehdinejad</a></li>
+                <li>Location: Rasht, Gilan, Iran</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 Aida Mehdinejad.
+    </footer>
+</div>
+</body>
+</html>
